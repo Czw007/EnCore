@@ -28,3 +28,7 @@ private cloud. By systematically exploiting environment
 information and by learning correlation rules across
 multiple configuration settings, EnCore detects 1.6x to 3.5x
 more misconfiguration anomalies than previous approaches.
+
+简单复现----------------
+
+较详细的版本9月开学上传------------

@@ -1,0 +1,35 @@
+{
+	"types": {
+		"FilePath": "^/.+(/.+)*$",
+		"UserName": "[a-zA-Z_][a-zA-Z0-9_]*",
+		"GroupName": "[a-zA-Z_][a-zA-Z0-9_]*",
+		"IPAdress": "^[\\d]{1,3}(\\.[\\d]{1,3}){3}$",
+		"Number": "^[0-9]+[.0-9]*$",
+		"Size": "^[\\d]+[KMGT]B?$",
+		"Boolean": "^Off|On|yes|no$"
+	},
+	"rules": {
+		"Number": {
+			"parallel": ["max", "min"]
+		},
+		"UserName": {
+			"GroupName": ["isGroup"]
+		},
+		"FilePath": {
+			"parallel": ["isExist", "isFile", "isDir"],
+			"UserName": ["isOwner", "isReadable", "isWriteable"],
+			"GroupName": ["isOwner"]
+		},
+		"Size": {
+			"parallel": ["max", "min"],
+			"Size": [">=", "="]
+		},
+		"String": {
+			"String": ["=", "isInclude"]
+		},
+		"Boolean": {
+			"parallel": ["values"],
+			"Boolean": ["=", "!=", "0→0", "1→1", "0→1", "1→0"]
+		}
+	}
+}
